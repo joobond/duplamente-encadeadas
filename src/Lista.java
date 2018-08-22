@@ -1,3 +1,5 @@
+//Feitos:
+//Não feitos: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 public class Lista {
 
     private No inicio;
@@ -24,6 +26,7 @@ public class Lista {
         }
         quantidade++;
     }
+
 
     public void inserirFim(No no) {
         if (isVazia()) {
@@ -63,6 +66,46 @@ public class Lista {
                 System.out.println(aux.getElemento());
                 aux = aux.getProximo();
             }
+        }
+    }
+
+    public No remover(int posicao) {
+        No aux = inicio;
+        if (!isVazia() && posicao >= 1 && posicao <= quantidade) {
+            if (posicao == 1) {
+                inicio = aux.getProximo();
+
+                if (inicio != null) {
+                    inicio.setAnterior(null);
+                } else if (posicao == quantidade) {
+                    aux = fim;
+                    fim = fim.getAnterior();
+                    fim.setProximo(null);
+
+                }
+            } else {
+                for (int i = 1; i < posicao; i++) {
+                    aux = aux.getProximo();
+                }
+                aux.getAnterior().setProximo(aux.getProximo());
+                aux.getProximo().setAnterior(aux.getAnterior());
+            }
+            aux.setProximo(null);
+            aux.setAnterior(null);
+            quantidade--;
+        }
+        return aux;
+    }
+
+    //01
+    public boolean removerExtremidades(){
+        if(!isVazia()){
+            this.remover();
+            this.remover(quantidade);
+            return true;
+        }else{
+            System.out.println("A lista está vazia!");
+            return false;
         }
     }
 }
