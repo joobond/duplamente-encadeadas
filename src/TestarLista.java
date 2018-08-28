@@ -43,8 +43,51 @@ public class TestarLista {
         lista.clonarNaLista(teste);
         System.out.println("---TESTE---");
         teste.imprimir();
-        System.out.println("--UNIAO----");
-        Lista uniao = lista.uniao(teste);
-        uniao.imprimir();
+
+        Lista a = new Lista();
+        a.inserirFim(new No(0));
+        a.inserirFim(new No(1));
+        a.inserirFim(new No(2));
+        Lista b = new Lista();
+        b.inserirFim(new No(2));
+        b.inserirFim(new No(3));
+        b.inserirFim(new No(4));
+        b.inserirFim(new No(5));
+
+        System.out.println("---UNIAO---");
+        Lista uni = a.uniao(b);
+        uni.imprimir();
+        System.out.println("---INTERSECÇÃO---");
+        b.zerar();
+        b.inserirFim(new No(2));
+        b.inserirFim(new No(3));
+        b.inserirFim(new No(4));
+        b.inserirFim(new No(5));
+        Lista interseccao = a.interseccao(b);
+        interseccao.imprimir();
+        System.out.println("---DIFERENÇA---");
+        Lista diferenca = b.diferenca(a);
+        diferenca.imprimir();
+
+        Lista c = new Lista();
+        c.inserirFim(new No(5));
+        c.inserirFim(new No(4));
+        c.inserirFim(new No(3));
+
+        System.out.println("--LISTA C--");
+        c.imprimir();
+//        System.out.println("ORDENANDO");
+//        c.ordenar();
+//        c.imprimir();
+
+        Lista novinha = new Lista();
+
+        System.out.println("--NOVINHA--");
+        novinha = c.dividir(2);
+        novinha.imprimir();
+
+
+
+
     }
 }
