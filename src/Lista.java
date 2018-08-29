@@ -309,28 +309,23 @@ public class Lista {
             return false;
         }
     }
-
+    */
     //08
     public Lista ordenar() {
-        Lista nova = new Lista();
-        if (!this.isVazia()) {
-            No aux = this.inicio;
-            while (aux != null) {
-                if (aux.getElemento() > aux.getProximo().getElemento()) {
-                    aux.getAnterior().setProximo(aux.getProximo());
-                    aux.getProximo().setAnterior(aux.getAnterior());
-                    aux.setProximo(aux.getProximo().getProximo());
-                    aux.setAnterior(aux.getProximo());
-                }
+        Lista ordenada = new Lista();
+        if(!isVazia()){
+            No aux = inicio;
+            while(aux != null){
+                ordenada.inserirOrdenado(new No(aux.getElemento()));
                 aux = aux.getProximo();
             }
-            return this;
-        } else {
-            System.out.println("A lista não pode ser ordenada porque está vazia!");
+            return ordenada;
+        }else{
             return null;
         }
+
     }
-    */
+
     //09
     public Lista dividir(int posicao) {
         Lista nova = new Lista();
@@ -375,5 +370,27 @@ public class Lista {
             System.out.println("A lista está vazia!");
             return null;
         }
+    }
+
+    public void inserirOrdenado(No no){
+        if(isVazia()){
+            inicio = no;
+        }else{
+            No aux = inicio;
+            No anterior = inicio;
+
+            if(no.getElemento() < inicio.getElemento()){
+                no.setProximo(inicio);
+                inicio =  no;
+            }else{
+                while(no.getElemento() > aux.getElemento() || aux.getProximo() != null){
+                    anterior =  aux;
+                    aux = aux.getProximo();
+                }
+                anterior.setProximo(no);
+                no.setProximo(aux);
+            }
+        }
+
     }
 }

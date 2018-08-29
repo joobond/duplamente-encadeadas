@@ -76,9 +76,9 @@ public class TestarLista {
 
         System.out.println("--LISTA C--");
         c.imprimir();
-//        System.out.println("ORDENANDO");
-//        c.ordenar();
-//        c.imprimir();
+        System.out.println("ORDENANDO");
+        c.ordenar();
+        c.imprimir();
 
         Lista novinha = new Lista();
 
